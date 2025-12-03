@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Estadísticas</title>
+    </head>
+    <body>
+
+        <h1>Estadísticas del Sistema</h1>
+
+        <ul>
+            <li>Total de usuarios: <strong th:text="${totalUsuarios}"></strong></li>
+            <li>Usuarios administradores: <strong th:text="${admins}"></strong></li>
+            <li>Usuarios clientes: <strong th:text="${clientes}"></strong></li>
+            <li>Último usuario creado: <strong th:text="${ultimoUsuario}"></strong></li>
+        </ul>
+
+        <h2>Usuarios recientes</h2>
+        <table border="1" cellpadding="8">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Fecha creación</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="u : ${recientes}">
+                    <td th:text="${u.idUsuario}"></td>
+                    <td th:text="${u.nombre}"></td>
+                    <td th:text="${u.fechaCreacion}"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <br>
+        <a th:href="@{/usuarios}">⬅ Volver</a>
+
+    </body>
+</html>
